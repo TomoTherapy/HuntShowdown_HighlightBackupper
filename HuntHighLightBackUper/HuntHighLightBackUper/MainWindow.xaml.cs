@@ -23,18 +23,22 @@ namespace HuntHighLightBackUper
 		private XmlParser parser;
 		private int processedCount;
 		private int totalCount;
+		private int currentSessionCount;
 
 		public event PropertyChangedEventHandler PropertyChanged;
 		public string TempFolderPath { get => parser.Settings.TempFolderPath; set { parser.Settings.TempFolderPath = value; RaisePropertyChanged(); } }
 		public string SaveFolderPath { get => parser.Settings.SaveFolderPath; set { parser.Settings.SaveFolderPath = value; RaisePropertyChanged(); } }
-		public int ProcessedCount { get => processedCount; set { processedCount = value; RaisePropertyChanged(); } }
 		public int TotalCount { get => totalCount; set { totalCount = value; RaisePropertyChanged(); } }
+		public int ProcessedCount { get => processedCount; set { processedCount = value; RaisePropertyChanged(); } }
+		public int CurrentSessionCount { get => currentSessionCount; set { currentSessionCount = value; RaisePropertyChanged(); } }
 
 		public MainWindow()
 		{
 			InitializeComponent();
+
 			DataContext = this;
 			ProcessedCount = 0;
+			CurrentSessionCount = 0;
 
 			parser = new XmlParser();
 			parser.LoadSettings();
@@ -53,32 +57,42 @@ namespace HuntHighLightBackUper
 			{
 				TotalCount = Directory.GetFiles(SaveFolderPath).Length;
 
-				if (Directory.Exists(TempFolderPath))
+				if (!Directory.Exists(TempFolderPath))
 				{
-					string[] paths = Directory.GetFiles(TempFolderPath);
+					return;
+				}
 
-					if (paths.Length == 0) return;
-					else
+				string[] paths = Directory.GetFiles(TempFolderPath);
+
+				if (paths.Length == 0)
+				{
+					if (CurrentSessionCount > 0)
 					{
-						foreach (string p in paths)
+						CurrentSessionCount = 0;
+					}
+					return;
+				}
+				else
+				{
+					foreach (string p in paths)
+					{
+						string filename = p.Split('\\').Last();
+						if (File.Exists(SaveFolderPath + '\\' + filename))
 						{
-							string filename = p.Split('\\').Last();
-							if (File.Exists(SaveFolderPath + '\\' + filename))
+							if (new FileInfo(SaveFolderPath + '\\' + filename).Length == new FileInfo(p).Length)
 							{
-								if (new FileInfo(SaveFolderPath + '\\' + filename).Length == new FileInfo(p).Length)
-								{
-									continue;
-								}
-								else
-								{
-									File.Copy(p, SaveFolderPath + '\\' + filename, true);
-								}
+								continue;
 							}
 							else
 							{
-								File.Copy(p, SaveFolderPath + '\\' + filename);
-								ProcessedCount++;
+								File.Copy(p, SaveFolderPath + '\\' + filename, true);
 							}
+						}
+						else
+						{
+							File.Copy(p, SaveFolderPath + '\\' + filename);
+							ProcessedCount++;
+							CurrentSessionCount++;
 						}
 					}
 				}
@@ -232,7 +246,7 @@ namespace HuntHighLightBackUper
 			TempFolderPath = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + @"\AppData\Local\Temp\Highlights\Hunt  Showdown";
 
 			DriveInfo[] drives = DriveInfo.GetDrives();
-			Debug.Assert(drives.Length < 1);
+			Debug.Assert(drives.Length >= 1);
 			if (drives.Length == 1)
 			{
 				SaveFolderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "HuntShowdown_Highlights");

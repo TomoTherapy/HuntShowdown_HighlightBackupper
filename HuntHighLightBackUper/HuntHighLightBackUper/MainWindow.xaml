@@ -5,60 +5,63 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HuntHighLightBackUper"
         mc:Ignorable="d"
-        Title="Hunt : Showdown HighLight BackUper" Height="137.496" Width="700.299" Closing="Window_Closing" ResizeMode="NoResize" WindowStyle="None">
-    <Grid Background="#FF272630" MouseDown="Grid_MouseDown">
-        <TextBlock HorizontalAlignment="Left" Margin="28,14,0,0" TextWrapping="Wrap" Text="HUNT : SHOWDOWN HIGHLIGHT BACKUPPER" VerticalAlignment="Top" Foreground="White" FontFamily="Segoe UI Semibold" FontSize="20"/>
-        <TextBox Name="TempFolder_textBox" Height="23" Margin="111,58,98,0" TextWrapping="Wrap" Text="{Binding TempFolderPath}" VerticalAlignment="Top" VerticalContentAlignment="Center" Padding="4,0" IsReadOnly="True" PreviewMouseDown="TempFolder_textBox_PreviewMouseDown" Cursor="Hand" FontFamily="Segoe UI"/>
-        <TextBox x:Name="SaveFolder_textBox" Height="23" Margin="111,92,98,0" TextWrapping="Wrap" Text="{Binding SaveFolderPath}" VerticalAlignment="Top" VerticalContentAlignment="Center" Padding="4,0" IsReadOnly="True" PreviewMouseDown="SaveFolder_textBox_PreviewMouseDown" Cursor="Hand" FontFamily="Segoe UI"/>
-        <TextBlock HorizontalAlignment="Left" Margin="29,62,0,0" TextWrapping="Wrap" Text="Temp Folder" VerticalAlignment="Top" Foreground="White" FontFamily="Segoe UI"/>
-        <TextBlock HorizontalAlignment="Left" Margin="28,94,0,0" TextWrapping="Wrap" Text="Save Folder" VerticalAlignment="Top" Foreground="White" FontFamily="Segoe UI"/>
-        <Button x:Name="Close_button" HorizontalAlignment="Right" VerticalAlignment="Top" Width="34" Height="34" Click="Close_button_Click">
-            <Grid>
-                <Rectangle Width="26" Height="2" RenderTransformOrigin="0.5,0.5" Fill="#FFEAEAEA">
-                    <Rectangle.RenderTransform>
-                        <TransformGroup>
-                            <ScaleTransform/>
-                            <SkewTransform/>
-                            <RotateTransform Angle="45"/>
-                            <TranslateTransform/>
-                        </TransformGroup>
-                    </Rectangle.RenderTransform>
-                </Rectangle>
-                <Rectangle Width="26" Height="2" RenderTransformOrigin="0.5,0.5" Fill="#FFEAEAEA">
-                    <Rectangle.RenderTransform>
-                        <TransformGroup>
-                            <ScaleTransform/>
-                            <SkewTransform/>
-                            <RotateTransform Angle="-45"/>
-                            <TranslateTransform/>
-                        </TransformGroup>
-                    </Rectangle.RenderTransform>
-                </Rectangle>
-            </Grid>
-            <Button.Style>
-                <Style TargetType="{x:Type Button}">
-                    <Setter Property="Background" Value="#FF272630"/>
-                    <Setter Property="Template">
-                        <Setter.Value>
-                            <ControlTemplate TargetType="{x:Type Button}">
-                                <Border Background="{TemplateBinding Background}">
-                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                </Border>
-                            </ControlTemplate>
-                        </Setter.Value>
-                    </Setter>
-                    <Style.Triggers>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Background" Value="#FFBB2020"/>
-                        </Trigger>
-                    </Style.Triggers>
-                </Style>
-            </Button.Style>
-        </Button>
-        <TextBlock HorizontalAlignment="Left" Margin="613,14,0,0" TextWrapping="Wrap" Text="{Binding ProcessedCount}" VerticalAlignment="Top" FontFamily="Segoe Script" FontSize="20" Foreground="White"/>
-        <TextBlock HorizontalAlignment="Left" Margin="534,14,0,0" TextWrapping="Wrap" Text="{Binding TotalCount}" VerticalAlignment="Top" FontFamily="Segoe Script" FontSize="20" Foreground="White"/>
-        <Button x:Name="TempFolderOpen_button" Content="Open" HorizontalAlignment="Right" Margin="0,58,37,0" VerticalAlignment="Top" Width="56" Height="23" FontFamily="Segoe UI" Padding="0,0,0,1" Click="TempFolderOpen_button_Click"/>
-        <Button x:Name="SaveFolderOpen_button" Content="Open" HorizontalAlignment="Right" Margin="0,92,37,0" VerticalAlignment="Top" Width="56" Height="23" FontFamily="Segoe UI" Padding="0,0,0,1" Click="SaveFolderOpen_button_Click"/>
-        <TextBlock HorizontalAlignment="Left" Margin="472,14,0,0" TextWrapping="Wrap" Text="total:" VerticalAlignment="Top" Foreground="White" FontFamily="Segoe Script" FontSize="20"/>
-    </Grid>
+        Title="Hunt : Showdown HighLight BackUper" Height="160" Width="700" Closing="Window_Closing" ResizeMode="NoResize" WindowStyle="None">
+	<Grid Background="#FF272630" MouseDown="Grid_MouseDown">
+		<TextBlock HorizontalAlignment="Left" Margin="24,9,0,0" TextWrapping="Wrap" Text="Hunt: Showdown Highlights Backupper" VerticalAlignment="Top" Foreground="White" FontFamily="Segoe Print" FontSize="20"/>
+		<TextBox Name="TempFolder_textBox" Height="22" Margin="111,89,98,0" TextWrapping="Wrap" Text="{Binding TempFolderPath}" VerticalAlignment="Top" VerticalContentAlignment="Center" Padding="4,0" IsReadOnly="True" PreviewMouseDown="TempFolder_textBox_PreviewMouseDown" Cursor="Hand" FontFamily="Segoe UI"/>
+		<TextBox x:Name="SaveFolder_textBox" Height="23" Margin="111,121,98,0" TextWrapping="Wrap" Text="{Binding SaveFolderPath}" VerticalAlignment="Top" VerticalContentAlignment="Center" Padding="4,0" IsReadOnly="True" PreviewMouseDown="SaveFolder_textBox_PreviewMouseDown" Cursor="Hand" FontFamily="Segoe UI"/>
+		<TextBlock HorizontalAlignment="Left" Margin="28,93,0,0" TextWrapping="Wrap" Text="Temp Folder" VerticalAlignment="Top" Foreground="White" FontFamily="Segoe UI"/>
+		<TextBlock HorizontalAlignment="Left" Margin="28,123,0,0" TextWrapping="Wrap" Text="Save Folder" VerticalAlignment="Top" Foreground="White" FontFamily="Segoe UI"/>
+		<Button x:Name="Close_button" HorizontalAlignment="Right" VerticalAlignment="Top" Width="34" Height="34" Click="Close_button_Click">
+			<Grid>
+				<Rectangle Width="26" Height="2" RenderTransformOrigin="0.5,0.5" Fill="#FFEAEAEA">
+					<Rectangle.RenderTransform>
+						<TransformGroup>
+							<ScaleTransform/>
+							<SkewTransform/>
+							<RotateTransform Angle="45"/>
+							<TranslateTransform/>
+						</TransformGroup>
+					</Rectangle.RenderTransform>
+				</Rectangle>
+				<Rectangle Width="26" Height="2" RenderTransformOrigin="0.5,0.5" Fill="#FFEAEAEA">
+					<Rectangle.RenderTransform>
+						<TransformGroup>
+							<ScaleTransform/>
+							<SkewTransform/>
+							<RotateTransform Angle="-45"/>
+							<TranslateTransform/>
+						</TransformGroup>
+					</Rectangle.RenderTransform>
+				</Rectangle>
+			</Grid>
+			<Button.Style>
+				<Style TargetType="{x:Type Button}">
+					<Setter Property="Background" Value="#FF272630"/>
+					<Setter Property="Template">
+						<Setter.Value>
+							<ControlTemplate TargetType="{x:Type Button}">
+								<Border Background="{TemplateBinding Background}">
+									<ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+								</Border>
+							</ControlTemplate>
+						</Setter.Value>
+					</Setter>
+					<Style.Triggers>
+						<Trigger Property="IsMouseOver" Value="True">
+							<Setter Property="Background" Value="#FFBB2020"/>
+						</Trigger>
+					</Style.Triggers>
+				</Style>
+			</Button.Style>
+		</Button>
+		<TextBlock HorizontalAlignment="Left" Margin="534,1,0,0" TextWrapping="Wrap" Text="{Binding TotalCount}" VerticalAlignment="Top" FontFamily="Segoe Print" FontSize="20" Foreground="White"/>
+		<TextBlock HorizontalAlignment="Left" Margin="540,29,0,0" TextWrapping="Wrap" Text="{Binding ProcessedCount}" VerticalAlignment="Top" FontFamily="Segoe Print" FontSize="20" Foreground="White"/>
+		<TextBlock HorizontalAlignment="Left" Margin="555,56,0,0" TextWrapping="Wrap" Text="{Binding CurrentSessionCount}" VerticalAlignment="Top" FontFamily="Segoe Print" FontSize="20" Foreground="White"/>
+		<TextBlock HorizontalAlignment="Left" Margin="454,-1,0,0" TextWrapping="Wrap" Text="total:" VerticalAlignment="Top" Foreground="White" FontFamily="Segoe Print" FontSize="20"/>
+		<TextBlock HorizontalAlignment="Left" Margin="454,27,0,0" TextWrapping="Wrap" Text="today:" VerticalAlignment="Top" Foreground="White" FontFamily="Segoe Print" FontSize="20"/>
+		<TextBlock HorizontalAlignment="Left" Margin="454,54,0,0" TextWrapping="Wrap" Text="current:" VerticalAlignment="Top" Foreground="White" FontFamily="Segoe Print" FontSize="20"/>
+		<Button x:Name="TempFolderOpen_button" Content="Open" HorizontalAlignment="Left" Margin="607,89,0,0" VerticalAlignment="Top" Width="56" Height="22" FontFamily="Segoe UI" Padding="0,0,0,1" Click="TempFolderOpen_button_Click"/>
+		<Button x:Name="SaveFolderOpen_button" Content="Open" HorizontalAlignment="Right" Margin="0,121,37,0" VerticalAlignment="Top" Width="56" Height="23" FontFamily="Segoe UI" Padding="0,0,0,1" Click="SaveFolderOpen_button_Click"/>
+	</Grid>
 </Window>
